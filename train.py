@@ -8,13 +8,13 @@ def main(opt):
     train_name = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # 2. 加载模型
-    print(f"正在加载模型配置: {opt.model}")
-    model = YOLO(opt.model)
+    print(f"正在加载模型配置: {opt.cfg}")
+    model = YOLO(opt.cfg)
     print(f"训练参数: Epochs={opt.epochs}, Batch={opt.batch}, Imgsz={opt.imgsz}, Data={opt.data}")
 
     # 3. 开始训练
     # 动态构建 run 的名称
-    run_name = f"{train_name}_{opt.imgsz}_{opt.model.split('.yaml')[0]}"
+    run_name = f"{train_name}_{opt.imgsz}_{opt.cfg.split('.yaml')[0]}"
 
     model.train(
         data=opt.data,
