@@ -2,14 +2,14 @@ FROM ubuntu:22.04
 
 
 # 安装基础工具包和图形库
-RUN apt-get update && \
-    apt-get install -y \
-    git rsync jq git-lfs vim curl wget unzip lsof nload htop net-tools dnsutils openssh-server \
-    build-essential \
-    libgl1 libglib2.0-0 \
-    && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    apt-get install -y \
+#    git rsync jq git-lfs vim curl wget unzip lsof nload htop net-tools dnsutils openssh-server \
+#    build-essential \
+#    libgl1 libglib2.0-0 \
+#    && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/*
 
 
 # 安装Miniconda
