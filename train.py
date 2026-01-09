@@ -23,7 +23,8 @@ def main(opt):
         imgsz=opt.imgsz,
         workers=opt.workers,
         name=run_name,
-        device=opt.device  # 添加了设备选择，方便切换 CPU/GPU
+        device=opt.device,  # 添加了设备选择，方便切换 CPU/GPU
+        resume=opt.resume,
     )
 
 
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     parser.add_argument('--workers', type=int, default=0, help='Dataloader workers (Windows下建议设为0)')
     parser.add_argument('--device', type=str, default='cuda:0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--cfg', type=str, default='cfg/yolov8n.yaml', help='模型配置文件路径')
+    parser.add_argument('--resume', type=bool, default=False, help='恢复训练')
     opt = parser.parse_args()
 
     main(opt)
