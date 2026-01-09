@@ -1,0 +1,12 @@
+names:
+  0: car
+  1: bus
+  2: person
+  3: truck
+  4: traffic sign
+  5: traffic light
+
+
+train: datasets/bdd100k_mini/images/train # train images (relative to 'path') 4 images
+val: datasets/bdd100k_mini/images/val # val images (relative to 'path') 4 images
+#test: datasets/M3FD_ir/test # test images (optional)
