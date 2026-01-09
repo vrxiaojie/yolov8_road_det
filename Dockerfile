@@ -1,20 +1,16 @@
 FROM ubuntu:22.04
 
 
-# 安装基础工具包和图形库
-RUN set -eux; \
-    cat > /etc/apt/sources.list <<'EOF'
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-EOF
-    apt-get update; \
-    apt-get install -y --no-install-recommends \
-        git rsync jq git-lfs vim curl wget unzip lsof nload htop net-tools dnsutils openssh-server \
-        build-essential \
-        libgl1 libglib2.0-0; \
-    apt-get clean; \
+# 替换为清华源并安装基础工具包和图形库
+RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.tuna.tsinghua.edu.cn@g' /etc/apt/sources.list && \
+    sed -i 's@//.*security.ubuntu.com@//mirrors.tuna.tsinghua.edu.cn@g' /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y \
+    git rsync jq git-lfs vim curl wget unzip lsof nload htop net-tools dnsutils openssh-server \
+    build-essential \
+    libgl1 libglib2.0-0 \
+    && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 
