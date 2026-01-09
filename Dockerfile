@@ -47,7 +47,7 @@ RUN ln -sf /opt/miniconda3/envs/py310/bin/python /usr/local/bin/python && \
 RUN /bin/bash -c "source /opt/miniconda3/etc/profile.d/conda.sh && \
     conda activate py310 && \
     conda install -y numpy==1.26.4 pandas scikit-learn matplotlib seaborn tqdm==4.66.4 -c conda-forge && \
-    conda install mkl==2023.1.0 polars kagglehub -y \
+    conda install mkl==2023.1.0 polars kagglehub -y  &&\
     pip install PyYAML==6.0.1 tensorboard==2.14.0 opencv-python==4.10.0.84"
 
 # 在py310环境中安装PyTorch (这一步现在不会破坏 numpy/scikit-learn 的兼容性)
