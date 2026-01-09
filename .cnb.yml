@@ -3,7 +3,7 @@ $:
     - runner:
         tags: cnb:arch:amd64:gpu:L40  # GPU集群选择
       docker:
-        build: .ide/Dockerfile    # 自定义镜像构建
+        build: Dockerfile    # 自定义镜像构建
       services:
         - vscode                  # VSCode服务
         - docker                  # Docker服务
