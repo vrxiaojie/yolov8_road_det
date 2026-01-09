@@ -8,6 +8,8 @@ def main(opt):
     train_name = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # 2. 加载模型
+    if opt.batch >= 1.0:
+        opt.batch = int(opt.batch)
     print(f"正在加载模型配置: {opt.cfg}")
     model = YOLO(opt.cfg)
     print(f"训练参数: Epochs={opt.epochs}, Batch={opt.batch}, Imgsz={opt.imgsz}, Data={opt.data}")
@@ -41,6 +43,7 @@ if __name__ == "__main__":
     parser.add_argument('--device', type=str, default='cuda:0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--cfg', type=str, default='cfg/yolov8n.yaml', help='模型配置文件路径')
     parser.add_argument('--resume', action='store_true', help='恢复训练')
+    parser.add_argument('--name', type=str, default='', help='结果保存名称')
     opt = parser.parse_args()
 
     main(opt)
