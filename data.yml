@@ -7,6 +7,6 @@ names:
   5: traffic light
 
 
-train: datasets/bdd100k_mini/images/train # train images (relative to 'path') 4 images
-val: datasets/bdd100k_mini/images/val # val images (relative to 'path') 4 images
+train: datasets/bdd100k-9000-1000/images/train # train images (relative to 'path') 4 images
+val: datasets/bdd100k-9000-1000/images/val # val images (relative to 'path') 4 images
 #test: datasets/M3FD_ir/test # test images (optional)
