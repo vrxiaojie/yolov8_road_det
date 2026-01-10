@@ -75,8 +75,6 @@ from .conv import (
     LightConv,
     RepConv,
     SpatialAttention,
-    GAM, # 新增
-    ECA, # 新增
 )
 from .head import (
     OBB,
@@ -181,6 +179,4 @@ __all__ = (
     "YOLOEDetect",
     "YOLOESegment",
     "v10Detect",
-    "GAM", # 新增
-    "ECA", # 新增
 )
