@@ -68,8 +68,6 @@ from ultralytics.nn.modules import (
     YOLOEDetect,
     YOLOESegment,
     v10Detect,
-    GAM, # 新增
-    ECA, # 新增
 )
 from ultralytics.utils import DEFAULT_CFG_DICT, LOGGER, YAML, colorstr, emojis
 from ultralytics.utils.checks import check_requirements, check_suffix, check_yaml
@@ -94,6 +92,8 @@ from ultralytics.utils.torch_utils import (
     smart_inference_mode,
     time_sync,
 )
+from .Convs import *
+from .Attentions import *
 
 
 class BaseModel(torch.nn.Module):
@@ -1555,6 +1555,7 @@ def parse_model(d, ch, verbose=True):
             SCDown,
             C2fCIB,
             A2C2f,
+            RFAConv, # 新增
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1645,7 +1646,7 @@ def parse_model(d, ch, verbose=True):
             c2 = args[0]
             c1 = ch[f]
             args = [*args[1:]]
-        elif m in {GAM, ECA}: # 新增
+        elif m in {GAM, ECA, EMA}: # 新增
             c1, c2 = ch[f], args[0]
             if c2 != nc:
                 c2 = make_divisible(min(c2, max_channels) * width, 8)
