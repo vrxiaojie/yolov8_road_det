@@ -1646,7 +1646,7 @@ def parse_model(d, ch, verbose=True):
             c2 = args[0]
             c1 = ch[f]
             args = [*args[1:]]
-        elif m in {GAM, ECA}: # 新增
+        elif m in {GAM, ECA, EMA}: # 新增
             c1, c2 = ch[f], args[0]
             if c2 != nc:
                 c2 = make_divisible(min(c2, max_channels) * width, 8)
