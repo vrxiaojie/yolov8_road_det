@@ -10,8 +10,8 @@ def main(opt):
     # 2. 加载模型
     if opt.batch >= 1.0:
         opt.batch = int(opt.batch)
-    print(f"正在加载模型配置: {opt.cfg}")
-    model = YOLO(opt.cfg)
+    print(f"正在加载模型配置: {opt.model}")
+    model = YOLO(opt.model)
     print(f"训练参数: Epochs={opt.epochs}, Batch={opt.batch}, Imgsz={opt.imgsz}, Data={opt.data}")
 
     # 3. 开始训练
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     parser.add_argument('--imgsz', type=int, default=640, help='输入图像尺寸')
     parser.add_argument('--workers', type=int, default=0, help='Dataloader workers (Windows下建议设为0)')
     parser.add_argument('--device', type=str, default='cuda:0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    parser.add_argument('--cfg', type=str, default='cfg/yolov8n.yaml', help='模型配置文件路径')
+    parser.add_argument('--model', type=str, default='model/yolov8n.yaml', help='模型配置文件路径')
     parser.add_argument('--resume', action='store_true', help='恢复训练')
     parser.add_argument('--name', type=str, default='', help='自定义结果保存名称')
     opt = parser.parse_args()
